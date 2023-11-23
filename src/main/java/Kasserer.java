@@ -1,31 +1,29 @@
 public class Kasserer {
-    private static final double ANNUAL_YOUTH_FEE = 1000;
-    private static final double ANNUAL_ADULT_FEE = 1600;
-    private static final double PASSIVE_FEE = 500;
-    private static final double SENIOR_DISCOUNT_PERCENTAGE = 0.25;
+    // Constants for the kontingent calculation
+    private static final double YOUTH_MEMBER_RATE = 1000;
+    private static final double SENIOR_MEMBER_RATE = 1600;
+    private static final double SENIOR_DISCOUNT_RATE = 0.75; // 25% discount for seniors
 
     public double calculateKontingent(Member member) {
-        double kontingent;
+        ActivityType activityType = member.getActivityType();
+        int age = member.getAge();
 
-        switch (member.getActivityType()) {
-            case ACTIVE_JUNIOR:
-                kontingent = ANNUAL_YOUTH_FEE;
-                break;
-            case ACTIVE_SENIOR:
-                kontingent = ANNUAL_ADULT_FEE;
-                if (member.getAge() > 60) {
-                    kontingent -= kontingent * SENIOR_DISCOUNT_PERCENTAGE;
-                }
-                break;
-            case PASSIVE:
-                kontingent = PASSIVE_FEE;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid activity type");
+        if (activityType == ActivityType.ACTIVE_JUNIOR) {
+            return YOUTH_MEMBER_RATE;
+        } else if (activityType == ActivityType.ACTIVE_SENIOR) {
+            double baseRate = SENIOR_MEMBER_RATE;
+
+            // Apply discount for seniors
+            if (age > 60) {
+                return baseRate * SENIOR_DISCOUNT_RATE;
+            } else {
+                return baseRate;
+            }
+        } else {
+            // Assuming PASSIVE members have a fixed rate of 500
+            return 500;
         }
-
-        return kontingent;
     }
 
-    // Other methods related to kontingent handling
+    // Other methods as needed
 }

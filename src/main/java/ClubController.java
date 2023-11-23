@@ -9,14 +9,56 @@ public class ClubController {
         this.fileHandler = fileHandler;
     }
 
-    public double calculateKontingent(Member member) {
-        fileHandler.saveMember(member); // Save member to file
-        return kasserer.calculateKontingent(member);
-    }
+    public int calculateKontingent(String memberName) {
+        Member member = findMemberByName(memberName);
 
-    public List<String> getMembers() {
-        return fileHandler.readMembers();
+        if (member != null) {
+            // No need to save the member here; it's already saved when edited
+            return (int) kasserer.calculateKontingent(member);
+        } else {
+            System.out.println("Member not found.");
+            return 0; // Or handle the situation accordingly
+        }
     }
 
     // Other controller methods
+
+    Member findMemberByName(String memberName) {
+        List<Member> members = fileHandler.readMembers();
+
+        for (Member member : members) {
+            if (member.getName().equalsIgnoreCase(memberName)) {
+                return member;
+            }
+        }
+
+        return null; // Member not found
+    }
+
+    public void saveMember(Member member) {
+        List<Member> members = fileHandler.readMembers();
+        members.add(member);
+        fileHandler.saveMembers(members);
+    }
+
+    public void editMember(String memberName, Member updatedMember) {
+        List<Member> members = fileHandler.readMembers();
+
+        for (int i = 0; i < members.size(); i++) {
+            if (members.get(i).getName().equalsIgnoreCase(memberName)) {
+                members.set(i, updatedMember);
+                fileHandler.saveMembers(members); // Save updated members to file
+                return;
+            }
+        }
+        System.out.println("Member not found: " + memberName);
+    }
+
+    public List<Member> getMembers() {
+        return fileHandler.readMembers();
+    }
+
+    public void saveMembers(List<Member> members) {
+        fileHandler.saveMembers(members);
+    }
 }
