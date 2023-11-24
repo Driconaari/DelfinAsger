@@ -9,7 +9,7 @@ public class FileHandler {
     private Path filePath;
 
     public FileHandler(Path filePath) {
-        this.filePath = filePath;
+         this.filePath = filePath;
     }
 
     public List<Member> readMembers() {
