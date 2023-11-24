@@ -169,7 +169,7 @@ public class UserInterface {
                 }
             }
 
-            System.out.print("Enter new activity type (1 for ACTIVE_JUNIOR, 2 for ACTIVE_SENIOR, 3 for PASSIVE, press Enter to keep current): ");
+            System.out.print(" ");
             ActivityType newActivityType = getActivityTypeFromUserInput();
             memberToEdit.setActivityType(newActivityType);
 
