@@ -21,7 +21,6 @@ public class ClubController {
         }
     }
 
-    // Other controller methods
 
     Member findMemberByName(String memberName) {
         List<Member> members = fileHandler.readMembers();
@@ -60,5 +59,25 @@ public class ClubController {
 
     public void saveMembers(List<Member> members) {
         fileHandler.saveMembers(members);
+    }
+
+    public void deleteMember(String memberName) {
+        List<Member> members = fileHandler.readMembers();
+        Member memberToDelete = null;
+
+        for (Member member : members) {
+            if (member.getName().equalsIgnoreCase(memberName)) {
+                memberToDelete = member;
+                break;
+            }
+        }
+
+        if (memberToDelete != null) {
+            members.remove(memberToDelete);
+            fileHandler.saveMembers(members);
+            System.out.println("Member deleted successfully.");
+        } else {
+            System.out.println("Member not found: " + memberName);
+        }
     }
 }

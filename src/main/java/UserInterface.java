@@ -19,7 +19,9 @@ public class UserInterface {
             System.out.println("2. View Members");
             System.out.println("3. Calculate Kontingent for a Member");
             System.out.println("4. Edit Member");
-            System.out.println("5. Exit");
+            System.out.println("5. Delete Member");
+            System.out.println("6. Exit");
+
 
             int choice = getUserChoice();
 
@@ -37,8 +39,13 @@ public class UserInterface {
                     editMember();
                     break;
                 case 5:
+                    deleteMember();
+                    break;
+                case 6:
                     System.out.println("Exiting the program. Goodbye!");
                     System.exit(0);
+
+
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
@@ -220,6 +227,12 @@ public class UserInterface {
 
 
 
+    private void deleteMember() {
+        System.out.print("Enter member name to delete: ");
+        String memberName = scanner.nextLine();
+
+        controller.deleteMember(memberName);
+    }
 
 
 
