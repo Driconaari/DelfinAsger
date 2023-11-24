@@ -8,22 +8,33 @@ public class Kasserer {
         ActivityType activityType = member.getActivityType();
         int age = member.getAge();
 
-        if (activityType == ActivityType.ACTIVE_JUNIOR) {
-            return YOUTH_MEMBER_RATE;
-        } else if (activityType == ActivityType.ACTIVE_SENIOR) {
-            double baseRate = SENIOR_MEMBER_RATE;
-
-            // Apply discount for seniors
-            if (age > 60) {
-                return baseRate * SENIOR_DISCOUNT_RATE;
-            } else {
-                return baseRate;
-            }
-        } else {
-            // Assuming PASSIVE members have a fixed rate of 500
-            return 500;
+        switch (activityType) {
+            case JUNIOR_SPRINT:
+                return YOUTH_MEMBER_RATE;  // Assuming the rate for Junior Sprint is the same as for youth members
+            case JUNIOR_MIDDLE_DISTANCE:
+                return YOUTH_MEMBER_RATE;  // Adjust the rate as needed
+            case JUNIOR_LONG_DISTANCE:
+                return YOUTH_MEMBER_RATE;  // Adjust the rate as needed
+            case SENIOR_SPRINT:
+                double baseSeniorRate = SENIOR_MEMBER_RATE;
+                // Apply discount for seniors
+                return (age > 60) ? baseSeniorRate * SENIOR_DISCOUNT_RATE : baseSeniorRate;
+            case SENIOR_MIDDLE_DISTANCE:
+                double baseMiddleDistanceRate = SENIOR_MEMBER_RATE;  // Adjust the rate as needed
+                // Apply discount for seniors
+                return (age > 60) ? baseMiddleDistanceRate * SENIOR_DISCOUNT_RATE : baseMiddleDistanceRate;
+            case SENIOR_LONG_DISTANCE:
+                double baseLongDistanceRate = SENIOR_MEMBER_RATE;  // Adjust the rate as needed
+                // Apply discount for seniors
+                return (age > 60) ? baseLongDistanceRate * SENIOR_DISCOUNT_RATE : baseLongDistanceRate;
+            case PASSIVE:
+                return 500;  // Assuming PASSIVE members have a fixed rate of 500
+            default:
+                System.out.println("Invalid activity type. Cannot calculate kontingent.");
+                return 0;
         }
     }
+
 
     // Other methods as needed
 }

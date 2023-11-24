@@ -1,4 +1,8 @@
+import java.util.Objects;
+
+
 public class Member {
+    private Coach coach;
     private String name;
     private int age;
     private ActivityType activityType;
@@ -8,8 +12,11 @@ public class Member {
     private String address;
     private String emergencyNumber;
     private String postalCode;
+    private boolean isProfessional;
+    private String swimStyle;
 
-    public Member(String name, int age, ActivityType activityType, String cprNumber, String phoneNumber, String email, String address, String emergencyNumber, String postalCode) {
+    public Member(String name, int age, ActivityType activityType, String cprNumber, String phoneNumber,
+                  String email, String address, String emergencyNumber, String postalCode, Coach coach) {
         this.name = name;
         this.age = age;
         this.activityType = activityType;
@@ -49,50 +56,103 @@ public class Member {
         return address;
     }
 
-    public String getEmergencyNumber() {
-        return emergencyNumber;
-    }
-
-    public void setAge(int newAge) {
-        this.age = newAge;
-    }
-
-    public void setActivityType(ActivityType newActivityType) {
-        this.activityType = newActivityType;
-    }
-
-    public void setName(String newName) {
-        this.name = newName;
-    }
-
-    public void setCprNumber(String newCprNumber) {
-        this.cprNumber = newCprNumber;
-    }
-
     public String getPostalCode() {
         return postalCode;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public String getEmergencyNumber() {
+        return emergencyNumber;
+    }
+
+    public Coach getCoach() {
+        return coach;
+    }
+
+    public void setCoach(Coach coach) {
+        this.coach = coach;
+    }
+
+    // Other getter and setter methods...
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Member member = (Member) o;
+        return age == member.age &&
+                activityType == member.activityType &&  // Use == for enum comparison
+                Objects.equals(name, member.name) &&
+                Objects.equals(cprNumber, member.cprNumber) &&
+                Objects.equals(phoneNumber, member.phoneNumber) &&
+                Objects.equals(email, member.email) &&
+                Objects.equals(address, member.address) &&
+                Objects.equals(emergencyNumber, member.emergencyNumber) &&
+                Objects.equals(postalCode, member.postalCode);
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, activityType, cprNumber, phoneNumber, email, address, emergencyNumber, postalCode);
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", activityType=" + activityType +
+                ", cprNumber='" + cprNumber + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", emergencyNumber='" + emergencyNumber + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", coach=" + coach +
+                '}';
+    }
+
+
+    public void setName(String newName) {
+    }
+
+    public void setAge(int newAge) {
+    }
+
+    public void setActivityType(ActivityType newActivityType) {
+    }
+
+    public void setCprNumber(String newCprNumber) {
     }
 
     public void setPhoneNumber(String newPhoneNumber) {
-        this.phoneNumber = newPhoneNumber;
     }
 
-    // Setter for email
     public void setEmail(String newEmail) {
-        this.email = newEmail;
     }
 
-    // Setter for address
     public void setAddress(String newAddress) {
-        this.address = newAddress;
     }
 
-    // Setter for emergency number
     public void setEmergencyNumber(String newEmergencyNumber) {
-        this.emergencyNumber = newEmergencyNumber;
+    }
+
+    public void setPostalCode(String newPostalCode) {
+    }
+
+
+    public void setProfessional(boolean isProfessional) {
+        this.isProfessional = isProfessional;
+    }
+
+    public void setSwimStyle(String swimStyle) {
+        this.swimStyle = swimStyle;
+    }
+
+    public String toCSVString() {
+        // Adjust this based on your actual member properties
+        return String.format("%s,%d,%s,%s,%s,%s,%s,%s,%s,%s,%b,%s",
+                name, age, activityType, cprNumber, phoneNumber, email, address, emergencyNumber,
+                postalCode, coach != null ? coach.getName() : "No Coach", isProfessional, swimStyle);
     }
 }

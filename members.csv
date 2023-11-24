@@ -1,5 +1,4 @@
-Lars Nielsen,30,ACTIVE_JUNIOR,010190-1234,555-1234,lars.nielsen@email.com,123 Elm Street,1234 Copenhagen,555-5678
-Mette Andersen,25,ACTIVE_SENIOR,040488-5678,555-5678,mette.andersen@email.com,456 Oak Avenue,5678 Aarhus,555-8765
-Karen Møller,35,PASSIVE,070985-9012,555-9012,karen.moller@email.com,789 Birch Lane,9012 Odense,555-2345
-Ole Jensen,40,ACTIVE_JUNIOR,090680-3456,555-3456,ole.jensen@email.com,012 Pine Road,3456 Aalborg,555-6789
-Signe Larsen,28,ACTIVE_SENIOR,110593-7890,555-7890,signe.larsen@email.com,234 Maple Court,7890 Esbjerg,555-9012
+Alice,25,JUNIOR_SPRINT,1234567890,9876543210,alice@example.com,123 Main St,C12345,1122334455,No Coach,false,Freestyle
+Bob,30,SENIOR_MIDDLE_DISTANCE,0987654321,5678901234,bob@example.com,456 Oak St,O54321,5544332211,No Coach,true,Butterfly
+Charlie,22,JUNIOR_LONG_DISTANCE,1357924680,4567890123,charlie@example.com,789 Elm St,E67890,9988776655,No Coach,false,Backstroke
+David,28,SENIOR_SPRINT,2468013579,7890123456,david@example.com,321 Pine St,P98765,6655443322,Sprint Coach,true,Freestyle

@@ -16,10 +16,6 @@ public class Competition {
         return name;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
     public List<CompetitionDiscipline> getDisciplines() {
         return disciplines;
     }
