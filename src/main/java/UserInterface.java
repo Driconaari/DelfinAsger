@@ -11,7 +11,10 @@ public class UserInterface {
     }
 
     public void run() {
-        System.out.println("Welcome to Svømmeklubben Delfinen!");
+        System.out.println("╔═══════════════════════════════════════════╗");
+        System.out.println("║   𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸 𝓢𝓿ø𝓶𝓶𝓮𝓴𝓵𝓾𝓫𝓫𝓮𝓷 𝓓𝓮𝓵𝓯𝓲𝓷𝓮𝓷!   ║");
+        System.out.println("╚═══════════════════════════════════════════╝");
+
 
         while (true) {
             System.out.println("\nChoose an option:");
@@ -233,10 +236,6 @@ public class UserInterface {
 
         controller.deleteMember(memberName);
     }
-
-
-
-
 
     private void updateMemberAttributes(Member member) {
         // For simplicity, take input for the attributes you want to edit
